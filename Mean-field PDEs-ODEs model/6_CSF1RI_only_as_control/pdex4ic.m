@@ -1,0 +1,25 @@
+function u0 = pdex4ic(x)
+global L
+global C_T_0 C_M1_0 C_M2_0 CSF1_0 EGF_0 IGF1_0
+global x_0
+
+u0 = [(1-x/L)*0.4+0.4;%tumor
+    x/L*0.05+0.05;%M1
+    x/L.*0.4+0.4;%M2
+    (1-x/L)*0.1+0.4;%CSF1
+    (1-x/L)*0.2+0.3;
+    (1-x/L)*0.2+0.3;
+    0;%IGF1
+    0.7;%EGFR
+    0.72;%ERK
+    0;%IGF1R
+    0.01;%AKT
+    0.4;
+    0.3;
+    (1-x/L)*0.1+0.1%Gal9
+    ];   %用药的时候  CSF1浓度改为了0.4
+
+
+
+
+end

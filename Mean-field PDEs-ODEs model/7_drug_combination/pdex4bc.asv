@@ -1,0 +1,32 @@
+function [pl,ql,pr,qr] = pdex4bc(xl,ul,xr,ur,t)
+global t_now tnow_inter boundary_flag C_now PTEN inter1
+
+p_3=0;
+if PTEN==1
+    p_3=0;
+else
+    if t_now==0
+        p_3=0;
+    else
+        if boundary_flag~=0
+            if t_now<=t && t<=tnow_inter
+                %连接函数
+                p_3=(1-2*(t-(tnow_inter)/inter1))*((t-t_now)/inter1)^2;
+            else %巨噬细胞密度<=肿瘤密度，通量不为0
+                p_3=-0.5*C_now;
+            end
+        else
+            if t_now<=t && t<=tnow_inter
+                %连接函数
+                p_3=(1=2*(t-t_now)/inter1)*((t-()))
+            else %巨噬细胞密>=肿瘤密度，通量为0
+                p_3=0;
+            end
+        end
+    end
+end
+pl = [0; 0; p_3; 0; 0; 0;0];
+ql = [1; 1; 1; 1; 1; 1;1];
+pr = [0; 0; p_3; 0; 0; 0;0];
+qr = [1; 1; 1; 1; 1; 1;1];
+end
